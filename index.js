@@ -1,10 +1,20 @@
+//initial 'global' variables
 let num_guesses = 1
 let actual = Math.floor(Math.random()*100)
-const play = () => {
+let guesses_list = []
+// document.querySelector('#guess').focus()
 
+const play = () => {
+    
+    //global variables get reset upon new game starting
+    guesses_list = []
     num_guesses = 1
     actual = Math.floor(Math.random()*100)
+
     console.log(actual)
+
+    //reseting DOM elements to proper new game and fousing on input
+    document.querySelector('#guess').focus()
     document.getElementById('hint').innerHTML='';
     document.querySelector('#play_again').setAttribute('style','display:"none"')
     document.querySelector('#submit').removeAttribute('disabled')
@@ -12,34 +22,65 @@ const play = () => {
 }
 
 const getInfo = (e) =>{
-    let guess = Number(document.getElementById('guess').value);
-    if (guess > actual){
 
-        document.getElementById('hint').innerHTML=`LOWER than ${guess}!`;
-        document.querySelector('#guess').value=''
-        num_guesses +=1;
-    }
-    if (guess < actual){
+    if (validate_input()) {
 
-        document.getElementById('hint').innerHTML=`HIGHER than ${guess}!`;
-        document.querySelector('#guess').value=''
-        num_guesses +=1;
-    }
-    if (guess === actual){
-
-        document.querySelector('#submit').setAttribute('disabled',true)
-        document.querySelector('#guess').value=''
-        document.querySelector('#guess').setAttribute('disabled', true)
-        if (num_guesses >1){
-            document.getElementById('hint').innerHTML=`YOU GOT IT! TOOK YOU ${num_guesses} GUESSES`
+        let guess = Number(document.getElementById('guess').value);
+        if (guess > actual){
+    
+            document.getElementById('hint').innerHTML=`LOWER than ${guess}!`;
+            document.querySelector('#guess').value=''
+            num_guesses +=1;
+            guesses_list.push(guess)
+        
         }
-        else {
-            document.getElementById('hint').innerHTML=`YOU CHEATER! TOOK YOU ONE GUESS ?!`
+        if (guess < actual){
+    
+            document.getElementById('hint').innerHTML=`HIGHER than ${guess}!`;
+            document.querySelector('#guess').value=''
+            num_guesses +=1;
+            guesses_list.push(guess)
         }
-        document.getElementById('play_again').setAttribute('style','display:inline')
+        if (guess === actual){
+    
+            guesses_list.push(guess)
+            document.querySelector('#submit').setAttribute('disabled',true)
+            document.querySelector('#guess').value=''
+            document.querySelector('#guess').setAttribute('disabled', true)
+            if (num_guesses >1){
+                let hint = document.getElementById('hint')
+                hint.innerHTML=`YOU GOT IT! TOOK YOU ${num_guesses} GUESSES: `
+                for (const guess of guesses_list) {
+                    hint.innerHTML += `${guess} `
+                }
+            }
+            else {
+                document.getElementById('hint').innerHTML=`YOU SHOULD PLAY THE LOTTO, TOO LUCKY!`
+            }
+            document.getElementById('play_again').setAttribute('style','display:inline')
+    
+            return 0;
+        }
+        document.querySelector('#guess').focus()
+        console.log(guess)
+
     }
 
-    console.log(guess)
+    else {
+        document.querySelector('#hint').innerHTML = 'Invalid input, try again!'
+        document.querySelector('#guess').focus();
+        document.querySelector('#guess').value = ''
+    }
+
 }
+
+const validate_input = () => {
+    guess = document.querySelector('#guess').value
+    if ( isNaN(guess) )  return false;
+    if ( Number(guess) > 100 || Number(guess) < 0 ) return false;
+
+    return true;
+}
+
 
 play()
