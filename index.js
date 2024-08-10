@@ -45,16 +45,19 @@ const getInfo = (e) =>{
         }
         if (guess === actual){
     
-            guesses_list.push(guess)
+            
             document.querySelector('#submit').setAttribute('disabled',true)
             document.querySelector('#guess').value=''
             document.querySelector('#guess').setAttribute('disabled', true)
             if (num_guesses >1){
                 let hint = document.getElementById('hint')
-                hint.innerHTML=`YOU GOT IT! <br> TOOK YOU ${num_guesses} GUESSES: `
+                hint.innerHTML=`YOU GOT IT! <br> TOOK YOU ${num_guesses} GUESSES : `
                 for (const guess of guesses_list) {
-                    hint.innerHTML += `${guess} `
+                    hint.innerHTML += `${guess} &#8680  `
                 }
+
+                hint.innerHTML += ` ${guess}`
+
             }
             else {
                 document.getElementById('hint').innerHTML=`YOU SHOULD PLAY THE LOTTO, TOO LUCKY!`
