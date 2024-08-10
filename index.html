@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guess My Number</title>
-</head>
-<body>
-    <label for="guess">Guess a number between 0 and 100</label>
-    <input type="text" id = "guess" value=""/>
-    <button id="submit" onclick="getInfo()">Guess</button>
-    <span id="hint"></span>
-    <button id="play_again" hidden onclick="play()">Play again</button>
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div class='container'>
+
+        <h1>Guess a number between 0 and 100</h1>
+        <br />
     
-</body>
+        <input type="text" id="guess" value="" />
+        <br />
+        <button id="submit" onclick="getInfo()" class = 'buttons'>Guess</button>
+        <button id="play_again" onclick="play()" hidden class="buttons">Play again</button>
+        <br />
+        <span id="hint" class="description"></span>
+    
+    </div>
+
+    <script src="index.js"></script>
+  </body>
 </html>

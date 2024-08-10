@@ -1,0 +1,45 @@
+body {
+  background-color: black;
+  /* display: flex; */
+  /* justify-content: center; */
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container {
+  /* margin: 0px auto; */
+  
+  /* display: flex; */
+  width:50%;
+  justify-content: center;
+  
+  
+}
+
+#guess {
+    width: 6rem;
+    height: 6rem;
+    font-size: 5rem;
+    color: orangered;
+    
+}
+
+.buttons {
+    width: 10rem;
+    height: 7rem;
+    font-size: 2rem;
+    background-color: orange ;
+    border-radius: 10%;
+    padding: 1rem;
+    
+}
+
+.buttons:hover {
+    /* background-color:orangered; */
+    font-weight:bold;
+    
+}
+
+.description {
+    font-size: x-large;
+}
