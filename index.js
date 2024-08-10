@@ -51,7 +51,7 @@ const getInfo = (e) =>{
             document.querySelector('#guess').setAttribute('disabled', true)
             if (num_guesses >1){
                 let hint = document.getElementById('hint')
-                hint.innerHTML=`YOU GOT IT! TOOK YOU ${num_guesses} GUESSES: `
+                hint.innerHTML=`YOU GOT IT! <br> TOOK YOU ${num_guesses} GUESSES: `
                 for (const guess of guesses_list) {
                     hint.innerHTML += `${guess} `
                 }
