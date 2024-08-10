@@ -12,7 +12,7 @@ const play = () => {
     num_guesses = 1
     actual = Math.floor(Math.random()*100)
 
-    console.log(actual)
+    console.log(`Secret: number is ${actual} shhh!`)
 
     //reseting DOM elements to proper new game and fousing on input
     document.querySelector('#submit').removeAttribute('hidden')
@@ -65,7 +65,7 @@ const getInfo = (e) =>{
             return 0;
         }
         document.querySelector('#guess').focus()
-        console.log(guess)
+        
 
     }
 
